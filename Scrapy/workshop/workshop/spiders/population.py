@@ -1,6 +1,5 @@
 import scrapy
 
-from workshop.population_data import PopulationData
 
 class PopulationSpider(scrapy.Spider):
     name = 'population'
@@ -11,27 +10,23 @@ class PopulationSpider(scrapy.Spider):
         population_table = response.xpath('//*[@id="mw-content-text"]/div[1]/table[2]//tr')
         city_pop = []
         headers = population_table[0]
-        header = headers.xpath('th//text()').extract()
+        header = headers.xpath('th//text()')
         header_list = []
         for index, item in enumerate(header):
             if index in [4, 7]:
                 continue
-            header_list.append(item)
+            header_list.append(item.extract())
             
         for row in population_table[1:]:
             table_data =[]
-            columns = row.xpath('td//text()').extract()
+            columns = row.xpath('td//text()')
             for index, item in enumerate(columns):
                 if index in [4, 7]:
                     continue
-                table_data.append(item)
-            city_pop.append(table_data)
-        zip_data = zip(header_list, city_pop)
-       # zip() = dict()
-        population_dict = dict(zip_data)
-        yield population_dict
-        
-        
+                table_data.append(item.extract())
+            zip_data = dict(zip(header_list, table_data))
+            city_pop.append(zip_data)
+            yield zip_data
         
             
             
