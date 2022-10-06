@@ -119,6 +119,40 @@ Change directory to your scrapy project folder, and under the **spiders** folder
 ~~~
 scrapy genspider <spider name> <allowed domain>
 ~~~
+take a look at the default spider generated in your repository, here you will input the necessary code to parse the web content and be able to write it to a file. 
+
+Using selectors in the shell and then writing to the script is recommended, as you will have a clear idea of what to expect. 
+
+**For Example:**
+the css selector is a good choice, and we also have the xpath selector to locate elements in xml docs. More information on the types and how to construct them can be found here:
+
+~~~
+https://docs.scrapy.org/en/latest/topics/selectors.html#topics-selectors
+~~~
+Using the Xpath selector, lets say that you want to get the book titles in the page
+~~~
+>>> response.xpath('//h3/a/text()').extract()
+['A Light in the ...', 'Tipping the Velvet', 'Soumission', 'Sharp Objects', 'Sapiens: A Brief History ...', 'The Requiem Red', 'The Dirty Little Secrets ...', 'The Coming Woman: A ...', 'The Boys in the ...', 'The Black Maria', 'Starving Hearts (Triangular Trade ...', "Shakespeare's Sonnets", 'Set Me Free', "Scott Pilgrim's Precious Little ...", 'Rip it Up and ...', 'Our Band Could Be ...', 'Olio', 'Mesaerion: The Best Science ...', 'Libertarianism for Beginners', "It's Only the Himalayas"]
+~~~
+You can assign this selector to a variable to reference it down the line
+
+~~~
+titles = response.xpath('//h3/a/text()').extract()
+~~~
+Try doing this for every element you would like to extract for your data, and check the output on the shell, if it is what you expected, you can use that specific xpath to construct your items later on. 
+
+**Additional step**
+For the sake of simplicity, we will not delve too deep into Scrapy's capabilities. I recommend reading the official documentation to expand on your web crawler and adjust it. 
+
+~~~
+https://docs.scrapy.org/en/latest/
+~~~
+On this exercise we can make use of **item containers** this feature makes it easier to manipulate data and store it in a convenient way for later use or writing to a file, to make use of item containers, simply navigate to the items.py folder scrapy created for the project.
+
+The name of the container must match the name for you variables for it to properly work.
+
+We can then import the module onto your spider to take advantage of its capabilities, as you can also introduce specific data transformation functions for your variables.
+
 
 ~~~
 scrapy crawl <spider name> -o output.csv
