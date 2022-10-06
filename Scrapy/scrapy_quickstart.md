@@ -94,6 +94,22 @@ view(response)
 For this exercise, we are going to use selectors, upon further inspection of the page, we want to extract the information on a sandbox bookstore. Take some time to open and inspect the elements of interest to determine how are we going to build the scraper 
 ![books](https://user-images.githubusercontent.com/97254770/194354037-acd38dc7-9dd0-4b33-b874-188a8736006e.png)
 
+Once we identify what we want to extract, we can use selectors to extract directly or simply test if we are on the right track
+~~~
+>>> response.css('title::text')
+[<Selector xpath='descendant-or-self::title/text()' data='\n    All products | Books to Scrape -...'>]
+~~~
+
+We can extract the data from the above with the following method
+~~~
+>>> response.css('title::text').extract()
+['\n    All products | Books to Scrape - Sandbox\n']
+~~~
+We can further clean the otput by removing newlines, spaces or unwanted characters, this step can be done from the shell, on the spider script, or after extracting the data, with some exploration and cleaning. 
+
+<img width="386" alt="interest" src="https://user-images.githubusercontent.com/97254770/194364061-9534417f-b12a-4c6f-ba38-14b09e1aa2bd.png">
+
+Inspect carefully the element, in this case the book listing, to identify what sort of data would be relevant to have to keep a database of books from best to worst rated, or sorted by price. After identifying what you want to extract, we can move on to test on the scrapy shell if you want, or directly to the spider code!
 
 **Creating your first 'spider'**
 
