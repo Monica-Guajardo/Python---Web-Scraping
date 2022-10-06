@@ -86,3 +86,6 @@ cities_df.to_csv('Mexico_population.csv')
 print(cities_df.head(2))
 ~~~
 After running this, you will have a neatly arranged dataframe with the details from the table scrapped with BeautifulSoup, take a look at the data and you can clean it on the same script, to produce a better dataset to work with  after extracting the information!
+
+## Web Crawling with Pagination
+-------------------
