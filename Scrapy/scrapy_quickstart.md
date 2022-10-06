@@ -64,20 +64,20 @@ scrapy shell
 Using the 'fetch' command inside the shell, we will verify if the website is active, as well as downloading objects, it will be stored automatically on the 'response' variable
 
 ~~~
-fetch('https://en.wikipedia.org/wiki/List_of_cities_in_Mexico')
+fetch('http://books.toscrape.com/')
 ~~~
 
 you should see the following output if the attempt was successful, it means the website is working
 
 ~~~
-[scrapy.core.engine] DEBUG: Crawled (200) <GET https://en.wikipedia.org/wiki/List_of_dog_breeds> (referer: None)
+[scrapy.core.engine] DEBUG: Crawled (200) <GET http://books.toscrape.com/> (referer: None)
 ~~~
 
 you can check the response variable on your shell
 
 ~~~
 >>> response
-<200 https://en.wikipedia.org/wiki/List_of_cities_in_Mexico>
+<200 http://books.toscrape.com/>
 >>> 
 ~~~
 
