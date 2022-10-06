@@ -166,3 +166,20 @@ scrapy crawl <spider name> -o output.json
 ~~~
 To run your spider and write the results to a file you can run the above command
 
+## Adding Pagination
+----------------
+If you scroll to the bottom of the page, you will see we have 50 pages, by inspecting the 'next' button we get the following, and we can access this by specifying the xml attribute
+
+
+~~~
+response.css('.next a').attrib['href']
+~~~
+
+this will yield the current page, and we can use this to set up our spider in a way that it can jump from the current page to the next until the last one is reached
+
+~~~
+jump_page = response.css('.next a').attrib['href']
+        if jump_page is not None:
+            yield response.follow(jump_page, callback = self.parse)
+~~~
+When you run your spider with the above, you will see that it goes through all 50 pages before exiting and saving the results!

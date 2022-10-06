@@ -33,5 +33,7 @@ class BookySpider(scrapy.Spider):
             
             yield items
         
-        
+        jump_page = response.css('.next a').attrib['href']
+        if jump_page is not None:
+            yield response.follow(jump_page, callback = self.parse)
         
