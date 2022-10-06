@@ -1,6 +1,8 @@
-Welcome! 
-In this repository you will find the resources to build a web crawler 
+## Welcome to Web Scraping!
+--------------
 
-Scrapy instructions:
+In this repository you will find the resources to set up your web scraping environment and build a web crawler with BeautifulSoup and Scrapy
 
-BeautifulSoup instructions: 
+[Scrapy Information and settings](Scrapy/scrapy_quickstart.md)
+
+[BeautifulSoup Information and settings](beautifulsoup/b4soup_quickstart.md)
