@@ -37,7 +37,7 @@ pyenv virtualenv <python version> <env name>
 ### Install scrapy
 
 ~~~
-pip install Scrapy
+pip install scrapy
 ~~~
 
 With successful installation of the framework, we can now move towards creating our first project
@@ -48,6 +48,7 @@ Go to your working directory, and use the following command
 ~~~
 scrapy startproject <Name of project>
 ~~~
+<img width="207" alt="spiderdocs" src="https://user-images.githubusercontent.com/97254770/194343025-23968f82-177a-44b9-9883-e53de24a7d07.png">
 
 On successful creation of the project, a new folder with all the necessary files will be created in a new folder
 
