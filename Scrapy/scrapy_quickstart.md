@@ -107,7 +107,8 @@ We can extract the data from the above with the following method
 ~~~
 We can further clean the otput by removing newlines, spaces or unwanted characters, this step can be done from the shell, on the spider script, or after extracting the data, with some exploration and cleaning. 
 
-<img width="386" alt="interest" src="https://user-images.githubusercontent.com/97254770/194364061-9534417f-b12a-4c6f-ba38-14b09e1aa2bd.png">
+![interest](https://user-images.githubusercontent.com/97254770/194364631-3ca98390-770a-41a9-9a89-b650c26bcb55.png)
+
 
 Inspect carefully the element, in this case the book listing, to identify what sort of data would be relevant to have to keep a database of books from best to worst rated, or sorted by price. After identifying what you want to extract, we can move on to test on the scrapy shell if you want, or directly to the spider code!
 
