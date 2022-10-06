@@ -1,7 +1,7 @@
 
 # Simple Scrapy Exercise
 
-Follow the instructions below to create and run your first scrapy project
+Follow the instructions below to create and run your first scrapy project. We are going to use a dedicated page for beginner and advanced web scrapers alike: https://toscrape.com/ Remember to practice ethically and always follow robots.txt rules
 
 ## Getting started
 --------
@@ -37,7 +37,7 @@ pyenv virtualenv <python version> <env name>
 ### Install scrapy
 
 ~~~
-pip install Scrapy
+pip install scrapy
 ~~~
 
 With successful installation of the framework, we can now move towards creating our first project
@@ -48,6 +48,7 @@ Go to your working directory, and use the following command
 ~~~
 scrapy startproject <Name of project>
 ~~~
+<img width="207" alt="spiderdocs" src="https://user-images.githubusercontent.com/97254770/194343025-23968f82-177a-44b9-9883-e53de24a7d07.png">
 
 On successful creation of the project, a new folder with all the necessary files will be created in a new folder
 
@@ -63,20 +64,20 @@ scrapy shell
 Using the 'fetch' command inside the shell, we will verify if the website is active, as well as downloading objects, it will be stored automatically on the 'response' variable
 
 ~~~
-fetch('https://en.wikipedia.org/wiki/List_of_cities_in_Mexico')
+fetch('http://books.toscrape.com/')
 ~~~
 
 you should see the following output if the attempt was successful, it means the website is working
 
 ~~~
-[scrapy.core.engine] DEBUG: Crawled (200) <GET https://en.wikipedia.org/wiki/List_of_dog_breeds> (referer: None)
+[scrapy.core.engine] DEBUG: Crawled (200) <GET http://books.toscrape.com/> (referer: None)
 ~~~
 
 you can check the response variable on your shell
 
 ~~~
 >>> response
-<200 https://en.wikipedia.org/wiki/List_of_cities_in_Mexico>
+<200 http://books.toscrape.com/>
 >>> 
 ~~~
 
@@ -90,7 +91,26 @@ view(response)
 
 **Using selectors**
 
-For this exercise, we are going to use selectors, upon further inspection of the page, we want to extract the information on cities in Mexico by population. Due to the class we need to use an xpath selector
+For this exercise, we are going to use selectors, upon further inspection of the page, we want to extract the information on a sandbox bookstore. Take some time to open and inspect the elements of interest to determine how are we going to build the scraper 
+![books](https://user-images.githubusercontent.com/97254770/194354037-acd38dc7-9dd0-4b33-b874-188a8736006e.png)
+
+Once we identify what we want to extract, we can use selectors to extract directly or simply test if we are on the right track
+~~~
+>>> response.css('title::text')
+[<Selector xpath='descendant-or-self::title/text()' data='\n    All products | Books to Scrape -...'>]
+~~~
+
+We can extract the data from the above with the following method
+~~~
+>>> response.css('title::text').extract()
+['\n    All products | Books to Scrape - Sandbox\n']
+~~~
+We can further clean the otput by removing newlines, spaces or unwanted characters, this step can be done from the shell, on the spider script, or after extracting the data, with some exploration and cleaning. 
+
+![interest](https://user-images.githubusercontent.com/97254770/194364631-3ca98390-770a-41a9-9a89-b650c26bcb55.png)
+
+
+Inspect carefully the element, in this case the book listing, to identify what sort of data would be relevant to have to keep a database of books from best to worst rated, or sorted by price. After identifying what you want to extract, we can move on to test on the scrapy shell if you want, or directly to the spider code!
 
 **Creating your first 'spider'**
 
@@ -100,5 +120,8 @@ Change directory to your scrapy project folder, and under the **spiders** folder
 scrapy genspider <spider name> <allowed domain>
 ~~~
 
-
+~~~
+scrapy crawl <spider name> -o output.csv
+~~~
+To run your spider and write the results to a file you can run the above command
 
