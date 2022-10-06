@@ -87,6 +87,9 @@ You can use the 'view' command to open the downloaded page on your browser, it w
 view(response)
 ~~~
 
+![page](https://user-images.githubusercontent.com/97254770/194413180-1f81d07e-dfc2-4cdc-9f87-1e4cc462ea48.png)
+
+
 **NOTE:** You can use this command to open and inspect the page for elements you would like to use with scrapy, take your time inspecting the page and elements for further practice
 
 **Using selectors**
@@ -149,13 +152,17 @@ https://docs.scrapy.org/en/latest/
 ~~~
 On this exercise we can make use of **item containers** this feature makes it easier to manipulate data and store it in a convenient way for later use or writing to a file, to make use of item containers, simply navigate to the items.py folder scrapy created for the project.
 
+<img width="314" alt="items" src="https://user-images.githubusercontent.com/97254770/194413849-db9250c5-ff12-4cba-a677-ade8a9eacd80.png">
+
+
 The name of the container must match the name for you variables for it to properly work.
 
 We can then import the module onto your spider to take advantage of its capabilities, as you can also introduce specific data transformation functions for your variables.
 
+<img width="665" alt="item_spider" src="https://user-images.githubusercontent.com/97254770/194413922-0f069929-b461-4fd6-972c-2b28cf89b4fb.png">
 
 ~~~
-scrapy crawl <spider name> -o output.csv
+scrapy crawl <spider name> -o output.json
 ~~~
 To run your spider and write the results to a file you can run the above command
 
