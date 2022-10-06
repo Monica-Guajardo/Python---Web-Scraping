@@ -1,7 +1,7 @@
 
 # Simple Scrapy Exercise
 
-Follow the instructions below to create and run your first scrapy project
+Follow the instructions below to create and run your first scrapy project. We are going to use a dedicated page for beginner and advanced web scrapers alike: https://toscrape.com/ Remember to practice ethically and always follow robots.txt rules
 
 ## Getting started
 --------
@@ -91,7 +91,9 @@ view(response)
 
 **Using selectors**
 
-For this exercise, we are going to use selectors, upon further inspection of the page, we want to extract the information on cities in Mexico by population. Due to the class we need to use an xpath selector
+For this exercise, we are going to use selectors, upon further inspection of the page, we want to extract the information on a sandbox bookstore. Take some time to open and inspect the elements of interest to determine how are we going to build the scraper 
+![books](https://user-images.githubusercontent.com/97254770/194354037-acd38dc7-9dd0-4b33-b874-188a8736006e.png)
+
 
 **Creating your first 'spider'**
 
