@@ -104,7 +104,7 @@ scrapy genspider <spider name> <allowed domain>
 ~~~
 
 ~~~
-scrapy crawl population -o output.csv
+scrapy crawl <spider name> -o output.csv
 ~~~
 To run your spider and write the results to a file you can run the above command
 
